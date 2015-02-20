@@ -1,0 +1,5 @@
+# Liste des fichiers à ne pas inclure dans le dépot
+
+bin/*
+uri-file.txt
+training.arff
