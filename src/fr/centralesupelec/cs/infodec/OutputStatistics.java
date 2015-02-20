@@ -3,12 +3,14 @@
  */
 package fr.centralesupelec.cs.infodec;
 
-import java.util.Iterator;
-
 import org.neo4j.graphdb.DynamicLabel;
+import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.ResourceIterable;
+import org.neo4j.graphdb.Relationship;
+import org.neo4j.graphdb.RelationshipType;
+import org.neo4j.graphdb.Transaction;
+import org.neo4j.tooling.GlobalGraphOperations;
 
 /**
  * Prints stats on the database.
@@ -27,14 +29,20 @@ public class OutputStatistics {
 	private GraphDatabaseService graph;
 	
 	/**
+	 * A tool used to make operations on the graph
+	 */
+	private GlobalGraphOperations gOps;
+	
+	/**
 	 * Creates a new instance of this class.
 	 * @param dbDirectory The directory of the graph database.
 	 */
 	public OutputStatistics(String dbDirectory) {
 		graphDb = new GraphDatabaseConnector(dbDirectory);
 		graph = graphDb.connect();
+		gOps = GlobalGraphOperations.at(graph);
 	}
-	
+
 	/**
 	 * @param args
 	 */
@@ -43,8 +51,17 @@ public class OutputStatistics {
 			System.err.println("Usage: java OutputStatistics <db-directory>");
 			System.exit(-1);
 		}
-		OutputStatistics dl = new OutputStatistics(args[0]);
-		System.out.println("Number of nodes : " + dl.numberOfNodes());
+		OutputStatistics output = new OutputStatistics(args[0]);
+		try (Transaction tx = output.graph.beginTx()) {
+			System.out.println("Number of total nodes : " + output.numberOfNodes());
+			String[] networks = new String[] {"flickr", "livejournal", "twitter", "youtube"};
+			for(String network : networks) {
+				System.out.println("Number of nodes for " + network + " : " + output.numberOfNodesByNetwork(network));
+			}
+			System.out.println("Number of \"friend\" relations : " + output.numberOfFriendLinks());
+			System.out.println("Number of \"me\" relations : " + output.numberOfMeLinks());
+			System.out.println("Average number of friends : " + output.avgFriends());
+		}
 	}
 
 	/**
@@ -54,7 +71,7 @@ public class OutputStatistics {
 	 */
 	public int numberOfNodes() {
 		int noNodes = 0;
-		for( Node n : graph.findNodesByLabelAndProperty(DynamicLabel.label("profile"), "", "")) {
+		for(Node n : gOps.getAllNodes()) {
 			noNodes++;
 		}
 		return noNodes;
@@ -65,9 +82,11 @@ public class OutputStatistics {
 	 * 
 	 * @return The number of nodes by network.
 	 */
-	public int numberOfNodesByNetwork() {
+	public int numberOfNodesByNetwork(String network) {
 		int noNodes = 0;
-		// TODO
+		for(Node n : graph.findNodesByLabelAndProperty(DynamicLabel.label("profile"), "network", network)) {
+			noNodes++;
+		}
 		return noNodes;
 	}
 
@@ -78,7 +97,11 @@ public class OutputStatistics {
 	 */
 	public int numberOfFriendLinks() {
 		int noLinks = 0;
-		// TODO
+		for(Relationship r : gOps.getAllRelationships()) {
+			if(r.isType(DynamicRelationshipType.withName("friend"))) {
+				noLinks++;
+			}
+		}
 		return noLinks;
 	}
 
@@ -89,7 +112,11 @@ public class OutputStatistics {
 	 */
 	public int numberOfMeLinks() {
 		int noLinks = 0;
-		// TODO
+		for(Relationship r : gOps.getAllRelationships()) {
+			if(r.isType(DynamicRelationshipType.withName("me"))) {
+				noLinks++;
+			}
+		}		
 		return noLinks;
 	}
 
@@ -99,9 +126,7 @@ public class OutputStatistics {
 	 * @return The average number of friends.
 	 */
 	public int avgFriends() {
-		int noLinks = 0;
-		// TODO
-		return noLinks;
+		return this.numberOfFriendLinks()/this.numberOfNodes();
 	}
 
 	/**
