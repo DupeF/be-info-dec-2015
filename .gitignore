@@ -3,3 +3,4 @@
 bin/*
 uri-file.txt
 training.arff
+lib/*
