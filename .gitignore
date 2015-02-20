@@ -1,6 +1,7 @@
 # Liste des fichiers à ne pas inclure dans le dépot
 
+lib/*
 bin/*
+
 uri-file.txt
 training.arff
-lib/*
