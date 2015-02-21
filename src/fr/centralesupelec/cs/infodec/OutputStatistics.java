@@ -61,7 +61,10 @@ public class OutputStatistics {
 			System.out.println("Number of \"me\" relations : " + output.numberOfMeLinks());
 			System.out.println("Average number of friends : " + output.avgFriends());
 			System.out.println("Maximal number of friends : " + output.maxFriends());
+			tx.success();
 		}
+		
+		output.graphDb.disconnect();
 	}
 
 	/**
@@ -126,8 +129,6 @@ public class OutputStatistics {
 	 * @return The average number of friends.
 	 */
 	public int avgFriends() {
-		//  The simplest method is to divide the number of "friendship" relations by node 
-		// return 2*this.numberOfFriendLinks()/this.numberOfNodes();
 		int total = 0;
 		int noNodes = 0;
 		for(Node n : gOps.getAllNodes())  {

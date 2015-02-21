@@ -17,10 +17,16 @@ public class ProblemModelCreator {
 	 */
 	public static ProblemModel createProblemModel() {
 		ProblemModel problemModel = new ProblemModel();
-		problemModel.addAttribute("attribute-1");
-		problemModel.addAttribute("attribute-2");
+		// Adding attributes expressing the similarity between two profiles
+		problemModel.addAttribute("nicknames");
+		problemModel.addAttribute("realname");
+		problemModel.addAttribute("emails");
+		problemModel.addAttribute("websites");
+		problemModel.addAttribute("profilesLinks");
+		problemModel.addAttribute("locations");
 		
-		problemModel.addClassLabel("class", new String[] {"class-label-1", "class-label2"});
+		// A single class "samePerson" is sufficientfor our problem
+		problemModel.addClassLabel("samePerson", new String[] {"yes", "no"});
 
 		return problemModel;
 	}
