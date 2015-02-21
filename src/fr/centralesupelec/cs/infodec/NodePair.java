@@ -11,7 +11,7 @@ import weka.core.Instance;
  *
  */
 public class NodePair {
-	
+		
 	/**
 	 * The first node.
 	 */
