@@ -8,7 +8,6 @@ import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
-import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.tooling.GlobalGraphOperations;
 
@@ -53,7 +52,7 @@ public class OutputStatistics {
 		}
 		OutputStatistics output = new OutputStatistics(args[0]);
 		try (Transaction tx = output.graph.beginTx()) {
-			System.out.println("Number of total nodes : " + output.numberOfNodes());
+			System.out.println("Number of nodes : " + output.numberOfNodes());
 			String[] networks = new String[] {"flickr", "livejournal", "twitter", "youtube"};
 			for(String network : networks) {
 				System.out.println("Number of nodes for " + network + " : " + output.numberOfNodesByNetwork(network));
@@ -61,6 +60,7 @@ public class OutputStatistics {
 			System.out.println("Number of \"friend\" relations : " + output.numberOfFriendLinks());
 			System.out.println("Number of \"me\" relations : " + output.numberOfMeLinks());
 			System.out.println("Average number of friends : " + output.avgFriends());
+			System.out.println("Maximal number of friends : " + output.maxFriends());
 		}
 	}
 
@@ -126,7 +126,17 @@ public class OutputStatistics {
 	 * @return The average number of friends.
 	 */
 	public int avgFriends() {
-		return this.numberOfFriendLinks()/this.numberOfNodes();
+		//  The simplest method is to divide the number of "friendship" relations by node 
+		// return 2*this.numberOfFriendLinks()/this.numberOfNodes();
+		int total = 0;
+		int noNodes = 0;
+		for(Node n : gOps.getAllNodes())  {
+			for(Relationship r : n.getRelationships(DynamicRelationshipType.withName("friend"))) {
+				total++;
+			}
+			noNodes++;
+		}
+		return total/noNodes;
 	}
 
 	/**
@@ -136,7 +146,14 @@ public class OutputStatistics {
 	 */
 	public int maxFriends() {
 		int noLinks = 0;
-		// TODO
+		int current;
+		for(Node n : gOps.getAllNodes())  {
+			current = 0;
+			for(Relationship r : n.getRelationships(DynamicRelationshipType.withName("friend"))) {
+				current++;
+			}
+			noLinks = (current > noLinks) ? current : noLinks;
+		}
 		return noLinks;
 	}
 
