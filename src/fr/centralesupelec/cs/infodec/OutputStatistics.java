@@ -72,6 +72,7 @@ public class OutputStatistics {
 	 * 
 	 * @return The number of nodes.
 	 */
+	@SuppressWarnings("unused")
 	public int numberOfNodes() {
 		int noNodes = 0;
 		for(Node n : gOps.getAllNodes()) {
@@ -85,6 +86,7 @@ public class OutputStatistics {
 	 * 
 	 * @return The number of nodes by network.
 	 */
+	@SuppressWarnings("unused")
 	public int numberOfNodesByNetwork(String network) {
 		int noNodes = 0;
 		for(Node n : graph.findNodesByLabelAndProperty(DynamicLabel.label("profile"), "network", network)) {
@@ -128,6 +130,7 @@ public class OutputStatistics {
 	 * 
 	 * @return The average number of friends.
 	 */
+	@SuppressWarnings("unused")
 	public int avgFriends() {
 		int total = 0;
 		int noNodes = 0;
@@ -145,6 +148,7 @@ public class OutputStatistics {
 	 * 
 	 * @return The maximum number of friends a node can have.
 	 */
+	@SuppressWarnings("unused")
 	public int maxFriends() {
 		int noLinks = 0;
 		int current;

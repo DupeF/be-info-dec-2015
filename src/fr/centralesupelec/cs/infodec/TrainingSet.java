@@ -3,9 +3,11 @@ package fr.centralesupelec.cs.infodec;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.tooling.GlobalGraphOperations;
@@ -45,17 +47,27 @@ public class TrainingSet extends DataSet {
 	 * @param graph The graph database.
 	 */
 	public void createTrainingSet(GraphDatabaseService graph) {
-		//TODO bon courage!
-		// On récupère les noeuds déja marqué avec un lien me : bas d'exemples positifs
+		
+		//TODO : Réflechir à ça : est-ce qu'on garde cette méthode ? Diminuer la taille du trainingSet ?
+		
 		try (Transaction tx = graph.beginTx()) {
+			
+			// On récupère les noeuds déja marqué avec un lien me : base d'exemples positifs
+
 			GlobalGraphOperations gOps = GlobalGraphOperations.at(graph);
 			ArrayList<NodePair> pairs = new ArrayList<NodePair>();
+			ArrayList<Node> involvedNodes = new ArrayList<Node>();
+			Node n1, n2;
 			for(Relationship r : gOps.getAllRelationships()) {
 				if(r.isType(DynamicRelationshipType.withName("me"))) {
-					pairs.add(new NodePair(r.getStartNode(), r.getEndNode()));
-					if(r.getStartNode() == r.getEndNode()) {
-						System.out.println("Problem");
-					}
+					n1 = r.getStartNode();
+					n2 = r.getEndNode();
+					// On ne prend pas une paire si un des éléments à déja été associé par une autre relation "me" (pour pouvoir mélanger les paires après)
+					if(!involvedNodes.contains(n1) && !involvedNodes.contains(n2)) {
+						pairs.add(new NodePair(n1,n2));
+						involvedNodes.add(n1);
+						involvedNodes.add(n2);
+					}					
 				}
 			}
 			
@@ -66,7 +78,28 @@ public class TrainingSet extends DataSet {
 				System.out.println(currentPair + "/" + pairsNumber + ") " + pair.getFirstNode().getProperty("uri") + " -- " + pair.getSecondNode().getProperty("uri") + " -- yes");
 				addInstance(pair.createInstance(getAttributes(), "yes"));
 			}
+			
+			// On mélange les paires : exemples négatifs
+			Random rand = new Random();
+			int low = 0;
+			int high = pairs.size();
+			currentPair = 0;
+			for( NodePair pair : pairs ) {
+				currentPair += 1;
+				Node source = pair.getFirstNode(); 
+				for ( int i = 0; i < 2; i += 1 )
+				{
+					int index = -1;
+					do {
+						index = rand.nextInt(high-low) + low;
+					} while( index == currentPair - 1 );
+					Node target = pairs.get(index).getSecondNode();
+					System.out.println(currentPair + "/" + pairsNumber + ") " + source.getProperty("uri") + " -- " + target.getProperty("uri") + " -- non");
+					addInstance((new NodePair(source, target)).createInstance(getAttributes(), "no"));
+				}
+			}
 			tx.success();
 		}
-	}	
+	}
+
 }

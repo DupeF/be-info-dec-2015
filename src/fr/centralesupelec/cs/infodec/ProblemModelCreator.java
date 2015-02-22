@@ -9,7 +9,7 @@ package fr.centralesupelec.cs.infodec;
  */
 public class ProblemModelCreator {
 	
-	// TODO create the problem model for your classification problem
+	// TODO : Est-ce qu'on laisse comme ça ? Gérer deux profils du même réseau social ?
 	
 	/**
 	 * Creates the problem model for a given classification problem.
