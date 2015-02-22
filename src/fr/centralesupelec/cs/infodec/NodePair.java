@@ -96,23 +96,55 @@ public class NodePair {
 		return 0;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private int sameEmail() {
-		// TODO Auto-generated method stub
+		String[] emails1 = (String[]) first.getProperty("emails");
+		String[] emails2 = (String[]) second.getProperty("emails");
+		for(String  email : emails1) {
+			for(String email2 : emails2) {
+				if(email.equals(email2))
+					return 1;
+			}
+		}
 		return 0;
 	}
 	
 	private int sameWebsiteURL() {
-		// TODO Auto-generated method stub
+		String[] urls1 = (String[]) first.getProperty("websites");
+		String[] urls2 = (String[]) second.getProperty("websites");
+		for(String  url : urls1) {
+			for(String url2 : urls2) {
+				if(url.equals(url2))
+					return 1;
+			}
+		}
 		return 0;
 	}
 	
 	private int sameProfileLinks() {
-		// TODO Auto-generated method stub
+		String[] urls1 = (String[]) first.getProperty("profiles");
+		String[] urls2 = (String[]) second.getProperty("profiles");
+		for(String  url : urls1) {
+			for(String url2 : urls2) {
+				if(url.equals(url2))
+					return 1;
+			}
+		}
 		return 0;
 	}
 	
 	private int sameLocation() {
-		// TODO Auto-generated method stub
+		String[] locations1 = (String[]) first.getProperty("locations");
+		String[] locations2 = (String[]) second.getProperty("locations");
+		for(String  location : locations1) {
+			for(String location2 : locations2) {
+				if(location.equals(location2))
+					return 1;
+			}
+		}
 		return 0;
 	}
 	
