@@ -2,6 +2,7 @@ package fr.centralesupelec.cs.infodec;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.neo4j.graphdb.Node;
 
@@ -89,6 +90,7 @@ public class NodePair {
 		return instance;
 	}
 
+	// TODO : Voir si on laisse avec le max (moyenne sur les 2/3 meilleurs résultats?)
 	private double nicknamesSimilarity() {
 		String[] nicknames1 = ((String[]) first.getProperty("nicknames", new String[]{}));
 		String[] nicknames2 = ((String[]) second.getProperty("nicknames", new String[]{}));
@@ -101,7 +103,78 @@ public class NodePair {
 		return sim;
 	}
 	
+	
+    // TODO : vérifier ???
+	private double realnameSimilarity() {
+		// Mesure Jaccard
+		String[] realname1 = ((String) first.getProperty("realname", "")).split(" ");
+		String[] realname2 = ((String) second.getProperty("realname", "")).split(" ");
+		Set<String> differentWords = new HashSet<String>();
+		for(String word  : realname1) {
+			differentWords.add(word);
+		}
+		for(String word : realname2) {
+			if(!differentWords.contains(word))
+				differentWords.add(word);
+		}
+		double totalNumber = realname1.length + realname2.length;
+		double motsCommuns = totalNumber - differentWords.size(); 
+		return (totalNumber == 0) ? 0 : motsCommuns/totalNumber;
+	}
+	
+	// TODO: presque jamais testé : on enlève?
+	private int sameEmail() {
+		return booleanSimilarity("emails");
+	}
+	
+	// TODO: On peut laisser tel quel ou enlever
+	private int sameWebsiteURL() {
+		return booleanSimilarity("websites");
+	}
+	
+	private int sameProfileLinks() {
+		String[] profiles1 = (String[]) first.getProperty("profiles", new String[]{});
+		String[] profiles2 = (String[]) second.getProperty("profiles", new String[]{});
+		int l1 = profiles1.length;
+		int l2 = profiles2.length;
+		String profile, profile2;
+		for(int i = 0; i<=l1; i++) {
+			profile = (i<l1) ? profiles1[i] : (String) first.getProperty("uri");
+			for(int j = 0; j<=l2; j++) {
+				profile2 = (j<l2) ? profiles2[j] : (String) second.getProperty("uri");
+				if(profile.equals(profile2))
+					return 1;
+			}
+		}
+		return 0;
+	}
 
+	private double sameLocation() {
+		String[] locations1 = (String[]) first.getProperty("locations", new String[]{});
+		String[] locations2 = (String[]) second.getProperty("locations", new String[]{});
+		double sim = 0;
+		for(String location : locations1) {
+			location.replaceAll(Pattern.quote("?"), "");
+			for(String location2 : locations2) {
+				location2.replaceAll(Pattern.quote("?"), "");
+				sim = Math.max(normalizedLevenshteinDistance(location, location2), sim);
+			}
+		}
+		return sim;
+	}
+	
+	private int booleanSimilarity(String key) {
+		String[] attributes1 = (String[]) first.getProperty(key, new String[]{});
+		String[] attributes2 = (String[]) second.getProperty(key, new String[]{});
+		for(String  attribute : attributes1) {
+			for(String attribute2 : attributes2) {
+				if(attribute.equals(attribute2))
+					return 1;
+			}
+		}
+		return 0;
+	}
+	
     public static double normalizedLevenshteinDistance(CharSequence s, CharSequence t)
     {
         // degenerate cases
@@ -156,56 +229,5 @@ public class NodePair {
     private static int minimum(int a, int b,  int c) {
     	return Math.min(c, Math.min(a, b));
     }
-	
-    // TODO : vérifier ???
-	private double realnameSimilarity() {
-		// Mesure Jaccard
-		String[] realname1 = ((String) first.getProperty("realname", "")).split(" ");
-		String[] realname2 = ((String) second.getProperty("realname", "")).split(" ");
-		Set<String> differentWords = new HashSet<String>();
-		for(String word  : realname1) {
-			differentWords.add(word);
-		}
-		for(String word : realname2) {
-			if(!differentWords.contains(word))
-				differentWords.add(word);
-		}
-		double totalNumber = realname1.length + realname2.length;
-		double motsCommuns = totalNumber - differentWords.size(); 
-		return (totalNumber == 0) ? 0 : motsCommuns/totalNumber;
-	}
-	
-	// TODO: presque jamais testé : on enlève?
-	private int sameEmail() {
-		return booleanSimilarity("emails");
-	}
-	
-	// TODO: On peut laisser tel quel ou enlever
-	private int sameWebsiteURL() {
-		return booleanSimilarity("websites");
-	}
-	
-	// TODO ok +comparaison aux uri
-	private int sameProfileLinks() {
-		return booleanSimilarity("profiles");
-	}
-	
-	// TODO : Significatif mais rechercher approx (attention aux ???)
-	private int sameLocation() {
-		return booleanSimilarity("locations");
-	}
-	
-	private int booleanSimilarity(String key) {
-		String[] attributes1 = (String[]) first.getProperty(key, new String[]{});
-		String[] attributes2 = (String[]) second.getProperty(key, new String[]{});
-		for(String  attribute : attributes1) {
-			for(String attribute2 : attributes2) {
-				System.out.println(key + " // test entre : " + attribute + " et " + attribute2);
-				if(attribute.equals(attribute2))
-					return 1;
-			}
-		}
-		return 0;
-	}
-	
+    
 }
