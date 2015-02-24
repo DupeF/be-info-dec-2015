@@ -11,15 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-
-import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.DynamicLabel;
-import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.Transaction;
+import org.neo4j.tooling.GlobalGraphOperations;
 
 import weka.classifiers.Classifier;
 import weka.core.Instance;
@@ -69,7 +65,7 @@ public class FindMe {
 		// Create the problem model.
 		ProblemModel problemModel = ProblemModelCreator.createProblemModel();
 
-		//TODO coder l'algorithme pour dÃ©couvrir des liens "me". Bon courage! ....
+		//TODO A priori c'est bon... Peut être à modifier
 
 		/*
 		 * Besoin d'une petite aide? Pour faire de la prediction en utilisant le classificateur cls, 
@@ -103,8 +99,8 @@ public class FindMe {
 
 			Collections.sort(scoredCandidates, new ScoredCandidateComparator());
 			try (Transaction tx = graph.beginTx()) {
-				for ( int i= 0; i < scoredCandidates.size() && i < 5; i += 1 )
-					System.out.println(scoredCandidates.get(i).getNode().getProperty("title") + " -- " + scoredCandidates.get(i).getScore());
+				for ( int i= 0; i < scoredCandidates.size() && i < 20; i += 1 )
+					System.out.println(scoredCandidates.get(i).getNode().getProperty("uri") + " -- " + scoredCandidates.get(i).getScore());
 				tx.success();
 			}
 		}while(true);
@@ -114,7 +110,6 @@ public class FindMe {
 
 	}
 
-	//TODO : ceci est un copier coller
 	private void classifyInstance(GraphDatabaseService graph, Classifier cls, Node node, Node candidate, 
 			ProblemModel problemModel, ArrayList<Candidate> scoredCandidates) throws Exception {
 		Instances data = new Instances("Test", problemModel.getAttributes(), 0);
@@ -150,7 +145,8 @@ public class FindMe {
 		return null;
 	}
 
-	//TODO : ceci est un copier coller : Il faut tout changer
+	//TODO : Voir à être plus fin que prendre tout le monde...
+	// Méthode basique on on considère tout le monde come un candidat potentiel
 	/**
 	 * Finds the candidates.
 	 * @param graph The graph
@@ -163,6 +159,15 @@ public class FindMe {
 		ArrayList<Candidate> candidates = new ArrayList<Candidate>();
 		try (Transaction tx = graph.beginTx()) {
 
+			GlobalGraphOperations gOps = GlobalGraphOperations.at(graph);
+			for(Node n : gOps.getAllNodes()) {
+				if(!n.equals(node)) {
+					candidates.add(new Candidate(n));
+					candidatesHm.put(n.getId(), candidates.size()-1);
+				}
+			}
+
+			/*
 			for ( Relationship r : node.getRelationships(Direction.OUTGOING, DynamicRelationshipType.withName("Link")) ) {
 				Node other = r.getOtherNode(node);
 				if ( other.hasLabel(DynamicLabel.label("Category")) )
@@ -183,19 +188,21 @@ public class FindMe {
 
 				}
 			}
+			*/
+			
+			
 			tx.success();
 		}
 
 		Collections.sort(candidates, new CandidateComparator());
 		ArrayList<Candidate>  candidates1000 = new ArrayList<Candidate>();
-		for ( int i = 0; i < candidates.size() && i < 1000; i += 1 )
+		for ( int i = 0; i < candidates.size() /*&& i < 1000*/; i += 1 )
 			candidates1000.add(candidates.get(i));
 		return candidates1000;
 	}
 
 }
 
-//TODO : ceci est un copier coller
 /**
  * 
  * Used to compare two candidates and sort them by decreasing support.
@@ -212,7 +219,6 @@ class CandidateComparator implements Comparator<Candidate> {
 	}
 }
 
-//TODO : ceci est un copier coller
 /**
  * 
  * Used to compare two candidates and sort them by decreasing score.

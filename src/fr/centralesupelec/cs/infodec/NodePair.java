@@ -90,8 +90,8 @@ public class NodePair {
 	}
 
 	private double nicknamesSimilarity() {
-		String[] nicknames1 = ((String) first.getProperty("nicknames")).split(" ");
-		String[] nicknames2 = ((String) second.getProperty("nicknames")).split(" ");
+		String[] nicknames1 = ((String[]) first.getProperty("nicknames", new String[]{}));
+		String[] nicknames2 = ((String[]) second.getProperty("nicknames", new String[]{}));
 		double sim = 0;
 		for(String nickname1 : nicknames1) {
 			for(String nickname2 : nicknames2) {
@@ -159,8 +159,8 @@ public class NodePair {
 	
 	private double realnameSimilarity() {
 		// Mesure Jaccard
-		String[] realname1 = ((String) first.getProperty("realname")).split(" ");
-		String[] realname2 = ((String) second.getProperty("realname")).split(" ");
+		String[] realname1 = ((String) first.getProperty("realname", "")).split(" ");
+		String[] realname2 = ((String) second.getProperty("realname", "")).split(" ");
 		Set<String> differentWords = new HashSet<String>();
 		for(String word  : realname1) {
 			differentWords.add(word);
@@ -171,55 +171,32 @@ public class NodePair {
 		}
 		double totalNumber = realname1.length + realname2.length;
 		double motsCommuns = totalNumber - differentWords.size(); 
-		return motsCommuns/totalNumber;
+		return (totalNumber == 0) ? 0 : motsCommuns/totalNumber;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	private int sameEmail() {
-		String[] emails1 = (String[]) first.getProperty("emails");
-		String[] emails2 = (String[]) second.getProperty("emails");
-		for(String  email : emails1) {
-			for(String email2 : emails2) {
-				if(email.equals(email2))
-					return 1;
-			}
-		}
-		return 0;
+		return booleanSimilarity("emails");
 	}
 	
 	private int sameWebsiteURL() {
-		String[] urls1 = (String[]) first.getProperty("websites");
-		String[] urls2 = (String[]) second.getProperty("websites");
-		for(String  url : urls1) {
-			for(String url2 : urls2) {
-				if(url.equals(url2))
-					return 1;
-			}
-		}
-		return 0;
+		return booleanSimilarity("websites");
 	}
 	
+	// TODO : est-ce que c du caca?
 	private int sameProfileLinks() {
-		String[] urls1 = (String[]) first.getProperty("profiles");
-		String[] urls2 = (String[]) second.getProperty("profiles");
-		for(String  url : urls1) {
-			for(String url2 : urls2) {
-				if(url.equals(url2))
-					return 1;
-			}
-		}
-		return 0;
+		return booleanSimilarity("profiles");
 	}
 	
 	private int sameLocation() {
-		String[] locations1 = (String[]) first.getProperty("locations");
-		String[] locations2 = (String[]) second.getProperty("locations");
-		for(String  location : locations1) {
-			for(String location2 : locations2) {
-				if(location.equals(location2))
+		return booleanSimilarity("locations");
+	}
+	
+	private int booleanSimilarity(String key) {
+		String[] attributes1 = (String[]) first.getProperty(key, new String[]{});
+		String[] attributes2 = (String[]) second.getProperty(key, new String[]{});
+		for(String  attribute : attributes1) {
+			for(String attribute2 : attributes2) {
+				if(attribute.equals(attribute2))
 					return 1;
 			}
 		}
