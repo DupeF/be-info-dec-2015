@@ -125,7 +125,7 @@ public class FindMe {
 
 	}
 
-	
+
 	/**
 	 * Returns the node with the specified profile url.
 	 * @param graph The graph hosting the data. 
@@ -188,9 +188,9 @@ public class FindMe {
 
 				}
 			}
-			*/
-			
-			
+			 */
+
+
 			tx.success();
 		}
 

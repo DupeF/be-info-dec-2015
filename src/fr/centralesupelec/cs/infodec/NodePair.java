@@ -157,6 +157,7 @@ public class NodePair {
     	return Math.min(c, Math.min(a, b));
     }
 	
+    // TODO : vérifier ???
 	private double realnameSimilarity() {
 		// Mesure Jaccard
 		String[] realname1 = ((String) first.getProperty("realname", "")).split(" ");
@@ -174,19 +175,22 @@ public class NodePair {
 		return (totalNumber == 0) ? 0 : motsCommuns/totalNumber;
 	}
 	
+	// TODO: presque jamais testé : on enlève?
 	private int sameEmail() {
 		return booleanSimilarity("emails");
 	}
 	
+	// TODO: On peut laisser tel quel ou enlever
 	private int sameWebsiteURL() {
 		return booleanSimilarity("websites");
 	}
 	
-	// TODO : est-ce que c du caca?
+	// TODO ok +comparaison aux uri
 	private int sameProfileLinks() {
 		return booleanSimilarity("profiles");
 	}
 	
+	// TODO : Significatif mais rechercher approx (attention aux ???)
 	private int sameLocation() {
 		return booleanSimilarity("locations");
 	}
@@ -196,6 +200,7 @@ public class NodePair {
 		String[] attributes2 = (String[]) second.getProperty(key, new String[]{});
 		for(String  attribute : attributes1) {
 			for(String attribute2 : attributes2) {
+				System.out.println(key + " // test entre : " + attribute + " et " + attribute2);
 				if(attribute.equals(attribute2))
 					return 1;
 			}

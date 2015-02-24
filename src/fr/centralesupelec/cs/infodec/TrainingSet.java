@@ -71,11 +71,11 @@ public class TrainingSet extends DataSet {
 				}
 			}
 			
-			int pairsNumber = pairs.size();
+			//int pairsNumber = pairs.size();
 			int currentPair = 0;
 			for(NodePair pair : pairs) {
 				currentPair += 1;
-				System.out.println(currentPair + "/" + pairsNumber + ") " + pair.getFirstNode().getProperty("uri") + " -- " + pair.getSecondNode().getProperty("uri") + " -- yes");
+				//System.out.println(currentPair + "/" + pairsNumber + ") " + pair.getFirstNode().getProperty("uri") + " -- " + pair.getSecondNode().getProperty("uri") + " -- yes");
 				addInstance(pair.createInstance(getAttributes(), "yes"));
 			}
 			
@@ -94,7 +94,7 @@ public class TrainingSet extends DataSet {
 						index = rand.nextInt(high-low) + low;
 					} while( index == currentPair - 1 );
 					Node target = pairs.get(index).getSecondNode();
-					System.out.println(currentPair + "/" + pairsNumber + ") " + source.getProperty("uri") + " -- " + target.getProperty("uri") + " -- non");
+					//System.out.println(currentPair + "/" + pairsNumber + ") " + source.getProperty("uri") + " -- " + target.getProperty("uri") + " -- non");
 					addInstance((new NodePair(source, target)).createInstance(getAttributes(), "no"));
 				}
 			}
