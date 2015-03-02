@@ -55,7 +55,7 @@ public class ModelCreator {
 		trainingSet.createTrainingSet(graph);
 		trainingSet.saveToArff();
 		System.out.println("Done!\n");
-
+		
 		SMO svm = dl.getSVM();
 		System.out.println("Training and evaluating the classifier...");
 

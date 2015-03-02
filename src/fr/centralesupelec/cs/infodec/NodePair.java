@@ -68,7 +68,6 @@ public class NodePair {
 		instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
 		instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
 		instance.setValue((Attribute)attributes.elementAt(6), classLabel);
-
 		return instance;
 	}
 	
@@ -86,6 +85,8 @@ public class NodePair {
 		instance.setValue((Attribute)attributes.elementAt(3), sameWebsiteURL());
 		instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
 		instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
+		//instance.setValue((Attribute)attributes.elementAt(2), Math.max(sameEmail(), Math.max(sameWebsiteURL(), sameProfileLinks())));
+
 
 		return instance;
 	}
@@ -97,7 +98,10 @@ public class NodePair {
 		double sim = 0;
 		for(String nickname1 : nicknames1) {
 			for(String nickname2 : nicknames2) {
-				sim = Math.max(sim, normalizedLevenshteinDistance(nickname1, nickname2));
+				if(  nickname1.length() > 3 && nickname2.length() > 3)
+					sim = Math.max(sim, normalizedLevenshteinDistance(nickname1, nickname2));
+				else if( nickname1.equalsIgnoreCase(nickname2))
+					sim = 1;
 			}
 		}
 		return sim;

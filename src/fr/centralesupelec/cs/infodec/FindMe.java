@@ -99,7 +99,7 @@ public class FindMe {
 
 			Collections.sort(scoredCandidates, new ScoredCandidateComparator());
 			try (Transaction tx = graph.beginTx()) {
-				for ( int i= 0; i < scoredCandidates.size() && i < 20; i += 1 )
+				for ( int i= 0; i < scoredCandidates.size() && i < 10; i += 1 )
 					System.out.println(scoredCandidates.get(i).getNode().getProperty("uri") + " -- " + scoredCandidates.get(i).getScore());
 				tx.success();
 			}
@@ -159,9 +159,12 @@ public class FindMe {
 		ArrayList<Candidate> candidates = new ArrayList<Candidate>();
 		try (Transaction tx = graph.beginTx()) {
 
+			String nodeNetwork = (String) node.getProperty("network");
+			String nNetwork;
 			GlobalGraphOperations gOps = GlobalGraphOperations.at(graph);
 			for(Node n : gOps.getAllNodes()) {
-				if(!n.equals(node)) {
+				nNetwork = (String) n.getProperty("network");
+				if(!n.equals(node) &&  !nNetwork.equals(nodeNetwork)) {
 					candidates.add(new Candidate(n));
 					candidatesHm.put(n.getId(), candidates.size()-1);
 				}
@@ -195,10 +198,7 @@ public class FindMe {
 		}
 
 		Collections.sort(candidates, new CandidateComparator());
-		ArrayList<Candidate>  candidates1000 = new ArrayList<Candidate>();
-		for ( int i = 0; i < candidates.size() /*&& i < 1000*/; i += 1 )
-			candidates1000.add(candidates.get(i));
-		return candidates1000;
+		return candidates;
 	}
 
 }

@@ -21,6 +21,8 @@ import weka.core.converters.ArffSaver;
  *
  */
 public class TrainingSet extends DataSet {
+	
+	private static final int NUMBER_OF_PAIRS = 50;
 	/**
 	 * Creates a new empty training set
 	 * 
@@ -75,8 +77,11 @@ public class TrainingSet extends DataSet {
 			int currentPair = 0;
 			for(NodePair pair : pairs) {
 				currentPair += 1;
+				if(currentPair > NUMBER_OF_PAIRS)
+					break;
 				//System.out.println(currentPair + "/" + pairsNumber + ") " + pair.getFirstNode().getProperty("uri") + " -- " + pair.getSecondNode().getProperty("uri") + " -- yes");
 				addInstance(pair.createInstance(getAttributes(), "yes"));
+				
 			}
 			
 			// On mélange les paires : exemples négatifs
@@ -86,6 +91,8 @@ public class TrainingSet extends DataSet {
 			currentPair = 0;
 			for( NodePair pair : pairs ) {
 				currentPair += 1;
+				if(currentPair > NUMBER_OF_PAIRS)
+					break;
 				Node source = pair.getFirstNode(); 
 				for ( int i = 0; i < 2; i += 1 )
 				{
