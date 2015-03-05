@@ -61,12 +61,18 @@ public class NodePair {
 	public Instance createInstance(FastVector attributes, String classLabel) {
 		Instance instance = new Instance(attributes.size());
 
-		instance.setValue((Attribute)attributes.elementAt(0), nicknamesSimilarity());
-		instance.setValue((Attribute)attributes.elementAt(1), realnameSimilarity());
-		instance.setValue((Attribute)attributes.elementAt(2), sameEmail());
-		instance.setValue((Attribute)attributes.elementAt(3), sameWebsiteURL());
-		instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
-		instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
+		if (bothHaveAttributeTab("nicknames"))
+			instance.setValue((Attribute)attributes.elementAt(0), nicknamesSimilarity());
+		if (bothHaveAttribute("realname"))
+			instance.setValue((Attribute)attributes.elementAt(1), realnameSimilarity());
+		if (bothHaveAttributeTab("emails"))
+			instance.setValue((Attribute)attributes.elementAt(2), sameEmail());
+		if (bothHaveAttributeTab("websites"))
+			instance.setValue((Attribute)attributes.elementAt(3), sameWebsiteURL());
+		if (bothHaveAttributeTab("profiles"))
+			instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
+		if (bothHaveAttributeTab("locations"))
+			instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
 		instance.setValue((Attribute)attributes.elementAt(6), classLabel);
 		return instance;
 	}
@@ -79,19 +85,36 @@ public class NodePair {
 	public Instance createInstance(FastVector attributes) {
 		Instance instance = new Instance(attributes.size());
 
-		instance.setValue((Attribute)attributes.elementAt(0), nicknamesSimilarity());
-		instance.setValue((Attribute)attributes.elementAt(1), realnameSimilarity());
-		instance.setValue((Attribute)attributes.elementAt(2), sameEmail());
-		instance.setValue((Attribute)attributes.elementAt(3), sameWebsiteURL());
-		instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
-		instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
+		if (bothHaveAttributeTab("nicknames"))
+			instance.setValue((Attribute)attributes.elementAt(0), nicknamesSimilarity());
+		if (bothHaveAttribute("realname"))
+			instance.setValue((Attribute)attributes.elementAt(1), realnameSimilarity());
+		if (bothHaveAttributeTab("emails"))
+			instance.setValue((Attribute)attributes.elementAt(2), sameEmail());
+		if (bothHaveAttributeTab("websites"))
+			instance.setValue((Attribute)attributes.elementAt(3), sameWebsiteURL());
+		if (bothHaveAttributeTab("profiles"))
+			instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
+		if (bothHaveAttributeTab("locations"))
+			instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
 		//instance.setValue((Attribute)attributes.elementAt(2), Math.max(sameEmail(), Math.max(sameWebsiteURL(), sameProfileLinks())));
 
 
 		return instance;
 	}
 
-	// TODO : Voir si on laisse avec le max (moyenne sur les 2/3 meilleurs résultats?)
+	private boolean bothHaveAttribute(String attribute) {
+		String attribute1 = ((String) first.getProperty(attribute, ""));
+		String attribute2 = ((String) second.getProperty(attribute, ""));
+		return (attribute1.length() > 0  && attribute2.length() > 0);
+	}
+	
+	private boolean bothHaveAttributeTab(String attribute) {
+		String[] attributes1 = ((String[]) first.getProperty(attribute, new String[]{}));
+		String[] attributes2 = ((String[]) second.getProperty(attribute, new String[]{}));
+		return (attributes1.length > 0  && attributes2.length > 0);
+	}
+	
 	private double nicknamesSimilarity() {
 		String[] nicknames1 = ((String[]) first.getProperty("nicknames", new String[]{}));
 		String[] nicknames2 = ((String[]) second.getProperty("nicknames", new String[]{}));

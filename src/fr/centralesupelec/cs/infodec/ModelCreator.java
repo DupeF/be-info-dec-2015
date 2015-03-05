@@ -8,8 +8,10 @@ import java.util.Random;
 
 import org.neo4j.graphdb.GraphDatabaseService;
 
+import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
+import weka.classifiers.rules.DecisionTable;
 import weka.core.SerializationHelper;
 
 /**
@@ -56,7 +58,7 @@ public class ModelCreator {
 		trainingSet.saveToArff();
 		System.out.println("Done!\n");
 		
-		SMO svm = dl.getSVM();
+		Classifier svm = dl.getSVM();
 		System.out.println("Training and evaluating the classifier...");
 
 		try {
@@ -98,6 +100,12 @@ public class ModelCreator {
 		SMO svm = new SMO();
 		svm.setBuildLogisticModels(true);
 		return svm;
+	}
+	
+	
+	private DecisionTable getOtherSVM() {
+		DecisionTable dt = new DecisionTable();
+		return dt;
 	}
 
 }
