@@ -6,128 +6,166 @@ trainingSet à 50 paires :
 
 	DecisionTable :
 
-		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
-		Finding me-links for http://www.flickr.com/photos/tokioshi/
-		http://twitter.com/igorhosse -- 0.896551724137931
-		http://twitter.com/antonioteoli -- 0.896551724137931
-		http://twitter.com/joshkoscheck -- 0.896551724137931
-		http://youtube.com/user/talkinboutme2 -- 0.896551724137931
-		http://youtube.com/user/taoofpooh26 -- 0.896551724137931
-		http://youtube.com/user/yorktonfilm -- 0.896551724137931
-		http://youtube.com/user/todmaffin -- 0.896551724137931
-		http://youtube.com/user/hotelslive -- 0.896551724137931
-		http://twitter.com/newtothekitchen -- 0.896551724137931
-		http://www.livejournal.com/users/trains/profile -- 0.896551724137931
-
 		Url du profil (type ENTER to exit): http://twitter.com/legendaryishuge
 		Finding me-links for http://twitter.com/legendaryishuge
-		http://www.flickr.com/photos/naked_ffish/ -- 0.896551724137931
-		http://www.flickr.com/photos/makkiephoto/ -- 0.896551724137931
-		http://www.flickr.com/photos/thedarlinglife/ -- 0.896551724137931
-		http://www.flickr.com/photos/feaverish/ -- 0.896551724137931
-		http://www.flickr.com/photos/eugeniagrasso/ -- 0.896551724137931
-		http://www.flickr.com/photos/andaria/ -- 0.896551724137931
-		http://www.flickr.com/photos/alexandrasophie/ -- 0.896551724137931
-		http://www.flickr.com/photos/reprise/ -- 0.896551724137931
-		http://www.flickr.com/photos/electro_cute/ -- 0.896551724137931
-		http://www.flickr.com/photos/genergrohl/ -- 0.896551724137931
+		http://www.flickr.com/photos/naked_ffish/ -- 0.9512195121951219
+		http://www.flickr.com/photos/makkiephoto/ -- 0.9512195121951219
+		http://www.flickr.com/photos/thedarlinglife/ -- 0.9512195121951219
+		http://www.flickr.com/photos/feaverish/ -- 0.9512195121951219
+		http://www.flickr.com/photos/eugeniagrasso/ -- 0.9512195121951219
+		http://www.flickr.com/photos/andaria/ -- 0.9512195121951219
+		http://www.flickr.com/photos/alexandrasophie/ -- 0.9512195121951219
+		http://www.flickr.com/photos/reprise/ -- 0.9512195121951219
+		http://www.flickr.com/photos/electro_cute/ -- 0.9512195121951219
+		http://www.flickr.com/photos/genergrohl/ -- 0.9512195121951219
+		
+		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
+		Finding me-links for http://www.flickr.com/photos/tokioshi/
+		http://twitter.com/igorhosse -- 0.9512195121951219
+		http://twitter.com/antonioteoli -- 0.9512195121951219
+		http://twitter.com/joshkoscheck -- 0.9512195121951219
+		http://youtube.com/user/talkinboutme2 -- 0.9512195121951219
+		http://youtube.com/user/taoofpooh26 -- 0.9512195121951219
+		http://youtube.com/user/yorktonfilm -- 0.9512195121951219
+		http://youtube.com/user/todmaffin -- 0.9512195121951219
+		http://youtube.com/user/hotelslive -- 0.9512195121951219
+		http://twitter.com/newtothekitchen -- 0.9512195121951219
+		http://www.livejournal.com/users/trains/profile -- 0.9512195121951219
+		
+		Url du profil (type ENTER to exit): http://twitter.com/lolrenee
+		Finding me-links for http://twitter.com/lolrenee
+		http://www.flickr.com/photos/alenachendler/ -- 0.9512195121951219
+		http://www.flickr.com/photos/bonnabelle/ -- 0.9512195121951219
+		http://www.flickr.com/photos/ballena53/ -- 0.9512195121951219
+		http://www.flickr.com/photos/colourfullife/ -- 0.9512195121951219
+		http://www.flickr.com/photos/elgatococo/ -- 0.9512195121951219
+		http://www.flickr.com/photos/lona/ -- 0.9512195121951219
+		http://www.flickr.com/photos/indie_ingenue/ -- 0.9512195121951219
+		http://www.flickr.com/photos/waterandsleep/ -- 0.9512195121951219
+		http://www.flickr.com/photos/soul2squeez/ -- 0.9512195121951219
+		http://www.flickr.com/photos/louobedlam/ -- 0.9512195121951219
 
 	SMO :
 
-		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
-		Finding me-links for http://www.flickr.com/photos/tokioshi/
-		http://www.livejournal.com/users/tokioshi/profile -- 0.9970015594506113 (Semble bien identique...)
-		http://www.livejournal.com/users/horoshi/profile -- 0.9100191363710239
-		http://www.livejournal.com/users/koskimoski/profile -- 0.8963243074258221
-		http://www.livejournal.com/users/tutihushi/profile -- 0.8564517733237226
-		http://www.livejournal.com/users/zojirushi/profile -- 0.8513478466963063
-		http://www.livejournal.com/users/mokrushin/profile -- 0.8430258464332561
-		http://www.livejournal.com/users/iorish/profile -- 0.7787937240362598
-		http://www.livejournal.com/users/turkishb/profile -- 0.7738943848690905
-		http://www.livejournal.com/users/koliasha/profile -- 0.7738943848690905
-		http://www.livejournal.com/users/napishi/profile -- 0.7738943848690905
-
 		Url du profil (type ENTER to exit): http://twitter.com/legendaryishuge
 		Finding me-links for http://twitter.com/legendaryishuge
-		http://www.flickr.com/photos/fredarmitage/ -- 0.6909715910773193
-		http://www.flickr.com/photos/leefabrique/ -- 0.6909715910773193
-		http://www.livejournal.com/users/elementary-game/profile -- 0.6909715910773193
-		http://www.livejournal.com/users/legend-of-mike/profile -- 0.6909715910773193
-		http://www.livejournal.com/users/mignardise/profile -- 0.6909715910773193
-		http://www.livejournal.com/users/legenda/profile -- 0.6909715910773193
-		http://www.flickr.com/photos/my_ill/ -- 0.6909715910773193
-		http://www.flickr.com/photos/lasegundaconigriega/ -- 0.6908296657083144
-		http://www.flickr.com/photos/andreisinger/ -- 0.647695983442458
-		http://www.flickr.com/photos/b_ombs/ -- 0.647695983442458
+		http://www.flickr.com/photos/fredarmitage/ -- 0.6778800187243507
+		http://www.flickr.com/photos/leefabrique/ -- 0.6778800187243507
+		http://www.livejournal.com/users/elementary-game/profile -- 0.6778800187243507
+		http://www.livejournal.com/users/legend-of-mike/profile -- 0.6778800187243507
+		http://www.livejournal.com/users/mignardise/profile -- 0.6778800187243507
+		http://www.livejournal.com/users/legenda/profile -- 0.6778800187243507
+		http://www.flickr.com/photos/my_ill/ -- 0.6778800187243507
+		http://www.flickr.com/photos/lasegundaconigriega/ -- 0.5920021365796988
+		http://www.flickr.com/photos/eleventhirtythree/ -- 0.5735971707400296
+		http://www.flickr.com/photos/gunnargestur/ -- 0.5499946969983888
+		
+		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
+		Finding me-links for http://www.flickr.com/photos/tokioshi/
+		http://www.livejournal.com/users/tokioshi/profile -- 0.9809323295707845
+		http://www.livejournal.com/users/takca/profile -- 0.8614000841582405
+		http://www.livejournal.com/users/neoromantic/profile -- 0.8405024930768047
+		http://www.livejournal.com/users/robynbright/profile -- 0.8160110517701761
+		http://www.livejournal.com/users/nickinuse/profile -- 0.7817045122153793
+		http://www.livejournal.com/users/violet-milk/profile -- 0.7809516416053092
+		http://www.livejournal.com/users/emsi/profile -- 0.7555992182270475
+		http://www.livejournal.com/users/mekish/profile -- 0.7341428893401347
+		http://www.livejournal.com/users/ff-mortsanscafe/profile -- 0.7253753712165137
+		http://www.livejournal.com/users/posta0_/profile -- 0.7034478006296273
+		
+		Url du profil (type ENTER to exit): http://twitter.com/lolrenee
+		Finding me-links for http://twitter.com/lolrenee
+		http://www.livejournal.com/users/oh-velveteen/profile -- 0.910309338657358
+		http://www.flickr.com/photos/aaarenee/ -- 0.8843836907420324
+		http://www.livejournal.com/users/dolzhenkov/profile -- 0.8591339704450078
+		http://www.livejournal.com/users/lalaranel/profile -- 0.8292187982220682
+		http://www.livejournal.com/users/otter78/profile -- 0.8192880090329869
+		http://www.flickr.com/photos/lolitanie/ -- 0.8128407706004134
+		http://www.flickr.com/photos/oliviarenee/ -- 0.7999917206952102
+		http://www.flickr.com/photos/aliciarenee/ -- 0.7999917206952102
+		http://www.livejournal.com/users/gloomleage/profile -- 0.7671235629376805
+		http://www.livejournal.com/users/neoromantic/profile -- 0.7618799724342249
 		
 trainingSet à 500 paires :
 
 	DecisionTable :
 	
-		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
-		Finding me-links for http://www.flickr.com/photos/tokioshi/
-		http://www.livejournal.com/users/zojirushi/profile -- 0.99581589958159
-		http://www.livejournal.com/users/tokioshi/profile -- 0.99581589958159
-		http://www.livejournal.com/users/mokrushin/profile -- 0.99581589958159
-		http://www.livejournal.com/users/horoshi/profile -- 0.99581589958159
-		http://www.livejournal.com/users/koskimoski/profile -- 0.99581589958159
-		http://www.livejournal.com/users/tutihushi/profile -- 0.99581589958159
-		http://twitter.com/antonioteoli -- 0.875
-		http://www.livejournal.com/users/torkington/profile -- 0.875
-		http://www.livejournal.com/users/forioscribe/profile -- 0.875
-		http://www.livejournal.com/users/tokarchuk/profile -- 0.875
-		
 		Url du profil (type ENTER to exit): http://twitter.com/legendaryishuge
 		Finding me-links for http://twitter.com/legendaryishuge
-		http://www.flickr.com/photos/gunnargestur/ -- 0.875
-		http://www.flickr.com/photos/andreisinger/ -- 0.875
-		http://www.flickr.com/photos/garyisaacs/ -- 0.875
-		http://www.flickr.com/photos/b_ombs/ -- 0.875
-		http://www.flickr.com/photos/nearnearfuture/ -- 0.875
-		http://www.flickr.com/photos/moonjuice/ -- 0.875
-		http://www.flickr.com/photos/darwishh/ -- 0.875
-		http://www.flickr.com/photos/cendrille/ -- 0.875
-		http://www.flickr.com/photos/gatinhice/ -- 0.875
-		http://www.flickr.com/photos/megancaros/ -- 0.875
+		http://www.flickr.com/photos/fredarmitage/ -- 0.9950738916256158
+		http://www.flickr.com/photos/leefabrique/ -- 0.9950738916256158
+		http://www.livejournal.com/users/elementary-game/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/legend-of-mike/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/mignardise/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/legenda/profile -- 0.9950738916256158
+		http://www.flickr.com/photos/my_ill/ -- 0.9950738916256158
+		http://www.flickr.com/photos/kristamasklousch/ -- 0.48
+		http://www.flickr.com/photos/naked_ffish/ -- 0.48
+		http://www.flickr.com/photos/makkiephoto/ -- 0.48
+		
+		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
+		Finding me-links for http://www.flickr.com/photos/tokioshi/
+		http://www.livejournal.com/users/toropchin/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/jokishop/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/takie-sny/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/tat-oshka/profile -- 0.9950738916256158
+		http://www.livejournal.com/users/mekish/profile -- 0.9950738916256158
+		http://twitter.com/thejoshhd -- 0.9950738916256158
+		http://www.livejournal.com/users/zojirushi/profile -- 0.9607843137254902
+		http://www.livejournal.com/users/forioscribe/profile -- 0.9607843137254902
+		http://www.livejournal.com/users/tokioshi/profile -- 0.9607843137254902
+		http://www.livejournal.com/users/tokarchuk/profile -- 0.9607843137254902
+		
+		Url du profil (type ENTER to exit): http://twitter.com/lolrenee
+		Finding me-links for http://twitter.com/lolrenee
+		http://www.flickr.com/photos/lockergnome/ -- 0.9950738916256158
+		http://www.flickr.com/photos/moline/ -- 0.9950738916256158
+		http://www.flickr.com/photos/laurencephilomene/ -- 0.9950738916256158
+		http://www.flickr.com/photos/juliedee/ -- 0.9950738916256158
+		http://www.flickr.com/photos/julianzee/ -- 0.9950738916256158
+		http://www.flickr.com/photos/l4urenella/ -- 0.9950738916256158
+		http://www.flickr.com/photos/oliviarenee/ -- 0.9950738916256158
+		http://www.flickr.com/photos/aliciarenee/ -- 0.9950738916256158
+		http://www.flickr.com/photos/moretrees/ -- 0.9950738916256158
+		http://www.flickr.com/photos/llorensot/ -- 0.9950738916256158
 		
 	SMO :
-	
-		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
-		Finding me-links for http://www.flickr.com/photos/tokioshi/
-		http://www.livejournal.com/users/tokioshi/profile -- 0.9969724919928898
-		http://www.livejournal.com/users/horoshi/profile -- 0.9162018525392818
-		http://www.livejournal.com/users/koskimoski/profile -- 0.9067556647130179
-		http://www.livejournal.com/users/tutihushi/profile -- 0.8736119782109665
-		http://www.livejournal.com/users/zojirushi/profile -- 0.866939349834186
-		http://www.livejournal.com/users/mokrushin/profile -- 0.855853367582947
-		http://www.livejournal.com/users/iorish/profile -- 0.8044474030546324
-		http://www.livejournal.com/users/turkishb/profile -- 0.7979542017744883
-		http://www.livejournal.com/users/koliasha/profile -- 0.7979542017744883
-		http://www.livejournal.com/users/napishi/profile -- 0.7979542017744883
-
-		
+			
 		Url du profil (type ENTER to exit): http://twitter.com/legendaryishuge
 		Finding me-links for http://twitter.com/legendaryishuge
-		http://www.flickr.com/photos/fredarmitage/ -- 0.7118304491617674
-		http://www.flickr.com/photos/leefabrique/ -- 0.7118304491617674
-		http://www.livejournal.com/users/elementary-game/profile -- 0.7118304491617674
-		http://www.livejournal.com/users/legend-of-mike/profile -- 0.7118304491617674
-		http://www.livejournal.com/users/mignardise/profile -- 0.7118304491617674
-		http://www.livejournal.com/users/legenda/profile -- 0.7118304491617674
-		http://www.flickr.com/photos/my_ill/ -- 0.7118304491617674
-		http://www.flickr.com/photos/lasegundaconigriega/ -- 0.6470061483439199
-		http://www.flickr.com/photos/andreisinger/ -- 0.6025739190076029
-		http://www.flickr.com/photos/b_ombs/ -- 0.6025739190076029
+		http://www.flickr.com/photos/fredarmitage/ -- 0.7362778885984225
+		http://www.flickr.com/photos/leefabrique/ -- 0.7362778885984225
+		http://www.livejournal.com/users/elementary-game/profile -- 0.7362778885984225
+		http://www.livejournal.com/users/legend-of-mike/profile -- 0.7362778885984225
+		http://www.livejournal.com/users/mignardise/profile -- 0.7362778885984225
+		http://www.livejournal.com/users/legenda/profile -- 0.7362778885984225
+		http://www.flickr.com/photos/my_ill/ -- 0.7362778885984225
+		http://www.flickr.com/photos/lasegundaconigriega/ -- 0.6541041198192367
+		http://www.flickr.com/photos/eleventhirtythree/ -- 0.6359437890360752
+		http://www.flickr.com/photos/gunnargestur/ -- 0.6123785052453558
 		
-		Url du profil (type ENTER to exit): http://twitter.com/bellebeautylish
-		Finding me-links for http://twitter.com/bellebeautylish
-		http://youtube.com/user/bellebeautylish -- 0.9963642942453871
-		http://www.livejournal.com/users/lebeautemps/profile -- 0.8516748607355658
-		http://www.livejournal.com/users/bellebastard/profile -- 0.8369387885273549
-		http://www.flickr.com/photos/bellefleurdelis/ -- 0.813431738304567
-		http://www.flickr.com/photos/jellemartens/ -- 0.7698096066820905
-		http://www.livejournal.com/users/floatyfish/profile -- 0.7685501367757812
-		http://www.livejournal.com/users/bellendehuanita/profile -- 0.7576893223992202
-		http://www.flickr.com/photos/blueberryoreo/ -- 0.7555577573183518
-		http://www.flickr.com/photos/balletcats/ -- 0.7550363815029447
-		http://www.flickr.com/photos/allbertovich/ -- 0.7515376581167796
+		Url du profil (type ENTER to exit): http://www.flickr.com/photos/tokioshi/
+		Finding me-links for http://www.flickr.com/photos/tokioshi/
+		http://www.livejournal.com/users/tokioshi/profile -- 0.9928186841087796
+		http://www.livejournal.com/users/takca/profile -- 0.9633203022874554
+		http://www.livejournal.com/users/neoromantic/profile -- 0.958591661097024
+		http://www.livejournal.com/users/robynbright/profile -- 0.9500526268552517
+		http://www.livejournal.com/users/violet-milk/profile -- 0.9361853936773686
+		http://www.livejournal.com/users/nickinuse/profile -- 0.9334357446633049
+		http://www.livejournal.com/users/emsi/profile -- 0.9194063841015123
+		http://www.livejournal.com/users/ff-mortsanscafe/profile -- 0.9156799419753087
+		http://www.livejournal.com/users/posta0_/profile -- 0.9060881642970499
+		http://www.livejournal.com/users/otter78/profile -- 0.8997151027953892
+		
+		Url du profil (type ENTER to exit): http://twitter.com/lolrenee
+		Finding me-links for http://twitter.com/lolrenee
+		http://www.livejournal.com/users/oh-velveteen/profile -- 0.9764924086481136
+		http://www.livejournal.com/users/dolzhenkov/profile -- 0.9547375489299422
+		http://www.livejournal.com/users/otter78/profile -- 0.9460828439819066
+		http://www.livejournal.com/users/lalaranel/profile -- 0.9312068157129261
+		http://www.livejournal.com/users/neoromantic/profile -- 0.9260845908991284
+		http://www.flickr.com/photos/aaarenee/ -- 0.9152129519441672
+		http://www.livejournal.com/users/gloomleage/profile -- 0.9104584813608694
+		http://www.livejournal.com/users/golovorez/profile -- 0.8855806841908369
+		http://www.livejournal.com/users/loree/profile -- 0.8825758340228591
+		http://www.livejournal.com/users/loreleei/profile -- 0.8825758340228591

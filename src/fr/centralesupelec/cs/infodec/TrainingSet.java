@@ -22,7 +22,7 @@ import weka.core.converters.ArffSaver;
  */
 public class TrainingSet extends DataSet {
 	
-	private static final int NUMBER_OF_PAIRS = 50;
+	private static final int NUMBER_OF_PAIRS = 500;
 	/**
 	 * Creates a new empty training set
 	 * 
@@ -64,6 +64,12 @@ public class TrainingSet extends DataSet {
 				if(r.isType(DynamicRelationshipType.withName("me"))) {
 					n1 = r.getStartNode();
 					n2 = r.getEndNode();
+					if(n1.getProperty("uri").equals("http://twitter.com/lolrenee")){
+						System.out.println(n2.getProperty("uri"));
+					}
+					if(n2.getProperty("uri").equals("http://twitter.com/lolrenee")){
+						System.out.println(n1.getProperty("uri"));
+					}
 					// On ne prend pas une paire si un des éléments à déja été associé par une autre relation "me" (pour pouvoir mélanger les paires après)
 					if(!involvedNodes.contains(n1) && !involvedNodes.contains(n2)) {
 						pairs.add(new NodePair(n1,n2));

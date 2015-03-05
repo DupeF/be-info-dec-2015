@@ -11,6 +11,7 @@ import org.neo4j.graphdb.GraphDatabaseService;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
+import weka.classifiers.functions.VotedPerceptron;
 import weka.classifiers.rules.DecisionTable;
 import weka.core.SerializationHelper;
 
@@ -58,6 +59,7 @@ public class ModelCreator {
 		trainingSet.saveToArff();
 		System.out.println("Done!\n");
 		
+		// Ligne à changer pour utiliser un classifier différent
 		Classifier svm = dl.getSVM();
 		System.out.println("Training and evaluating the classifier...");
 
@@ -96,16 +98,24 @@ public class ModelCreator {
 	 * Gets the SVM.
 	 * @return The SVM
 	 */
+	// Assez bon
 	private SMO getSVM() {
 		SMO svm = new SMO();
 		svm.setBuildLogisticModels(true);
 		return svm;
 	}
 	
-	
+	// Mauvais
 	private DecisionTable getOtherSVM() {
 		DecisionTable dt = new DecisionTable();
 		return dt;
+	}
+	
+	
+	// Pas adapté DU TOUT
+	private VotedPerceptron getPerceptron() {
+		VotedPerceptron vt = new VotedPerceptron();
+		return vt;
 	}
 
 }
