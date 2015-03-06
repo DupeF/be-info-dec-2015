@@ -22,7 +22,7 @@ import weka.core.converters.ArffSaver;
  */
 public class TrainingSet extends DataSet {
 	
-	private static final int NUMBER_OF_PAIRS = 500;
+	private static final int NUMBER_OF_PAIRS = 50;
 	/**
 	 * Creates a new empty training set
 	 * 
@@ -50,7 +50,6 @@ public class TrainingSet extends DataSet {
 	 */
 	public void createTrainingSet(GraphDatabaseService graph) {
 		
-		//TODO : Réflechir à ça : est-ce qu'on garde cette méthode ? Diminuer la taille du trainingSet ?
 		
 		try (Transaction tx = graph.beginTx()) {
 			

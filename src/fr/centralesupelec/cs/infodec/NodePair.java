@@ -97,7 +97,6 @@ public class NodePair {
 			instance.setValue((Attribute)attributes.elementAt(4), sameProfileLinks());
 		if (bothHaveAttributeTab("locations"))
 			instance.setValue((Attribute)attributes.elementAt(5), sameLocation());
-		//instance.setValue((Attribute)attributes.elementAt(2), Math.max(sameEmail(), Math.max(sameWebsiteURL(), sameProfileLinks())));
 
 
 		return instance;
@@ -131,7 +130,6 @@ public class NodePair {
 	}
 	
 	
-    // TODO : vérifier ???
 	private double realnameSimilarity() {
 		// Mesure Jaccard
 		String[] realname1 = ((String) first.getProperty("realname", "")).split(" ");
@@ -149,12 +147,10 @@ public class NodePair {
 		return (totalNumber == 0) ? 0 : motsCommuns/totalNumber;
 	}
 	
-	// TODO: presque jamais testé : on enlève?
 	private int sameEmail() {
 		return booleanSimilarity("emails");
 	}
 	
-	// TODO: On peut laisser tel quel ou enlever
 	private int sameWebsiteURL() {
 		return booleanSimilarity("websites");
 	}

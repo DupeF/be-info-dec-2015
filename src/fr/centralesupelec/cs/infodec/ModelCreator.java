@@ -10,8 +10,9 @@ import org.neo4j.graphdb.GraphDatabaseService;
 
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
+import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.SMO;
-import weka.classifiers.functions.VotedPerceptron;
+import weka.classifiers.lazy.KStar;
 import weka.classifiers.rules.DecisionTable;
 import weka.core.SerializationHelper;
 
@@ -106,16 +107,18 @@ public class ModelCreator {
 	}
 	
 	// Mauvais
-	private DecisionTable getOtherSVM() {
+	private DecisionTable getDecisionTable() {
 		DecisionTable dt = new DecisionTable();
 		return dt;
 	}
 	
 	
-	// Pas adapté DU TOUT
-	private VotedPerceptron getPerceptron() {
-		VotedPerceptron vt = new VotedPerceptron();
-		return vt;
+	private NaiveBayes getNaiveBayes() {
+		return new NaiveBayes();
+	}
+	
+	private KStar getKStar() {
+		return new KStar();
 	}
 
 }
